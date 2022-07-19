@@ -1,0 +1,132 @@
+$product-card-black: #333333;
+$white:#ffffff;
+
+.product {
+  width: 45%;
+  position: relative;
+  display: flex;
+  height: 60vh;
+  box-shadow: -2rem 2rem 3.2rem rgba(0, 0, 0, 0.2);
+  margin: 1rem;
+
+  &__left {
+    height: 60vh;
+    width: 45%;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__right {
+    background: $white;
+    height: auto;
+    width: 55%;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      height: 40vh;
+      width: 80%;
+    }
+  }
+
+  &__header {
+    h1 {
+      text-transform: uppercase;
+      margin: 1.5rem 0;
+      font-size: 1.5rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+
+  &__main {
+    color: $white;
+
+    display: flex;
+    flex-direction: column;
+
+    background: $product-card-black;
+    padding: 1rem 1.5rem;
+    height: 20vh;
+  }
+
+  &__focus {
+    text-transform: uppercase;
+    margin: 1 0 1rem 0;
+    padding: 0 0 0.9rem 0;
+    border-bottom: 0.2rem solid rgba(250, 250, 250, 0.3);
+  }
+
+  &__focus span:last-child {
+    margin: 0 0 0 1rem;
+    width: 100%;
+  }
+
+  &__focus span:first-child {
+    border-bottom: 0.2rem solid $white;
+    padding: 0 0 0.9rem 0;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+
+    padding: 1rem;
+  }
+
+  &__description {
+    margin: 1rem 0;
+    line-height: 1.45;
+    color: $product-card-black;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &__rating {
+    span:first-child {
+      margin-right: 1rem;
+    }
+  }
+
+  &__total {
+    display: flex;
+    align-items: center;
+
+    p {
+      font-weight: 700;
+      opacity: 0.5;
+      margin-left: 0.3rem;
+      margin-bottom: 0;
+    }
+  }
+
+  &__add {
+    border: 0.1rem solid $product-card-black;
+    width: 80%;
+    padding: 0;
+    padding: 0.9rem 1rem;
+    border-radius: 5rem;
+    transition: all 0.5s ease-out;
+    color: $product-card-black;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__add:hover {
+    background-color: #2e282a;
+    cursor: pointer;
+    color: $white;
+  }
+}

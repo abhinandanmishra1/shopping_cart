@@ -1,0 +1,17 @@
+.btn {
+  width: 30%;
+  border: 0.1rem solid rgba(51, 116, 255, 0.8);
+  background: rgb(51, 116, 255);
+  color: #ffffff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 1rem;
+  font-size: 1.8rem;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
