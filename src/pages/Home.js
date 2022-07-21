@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Link from '../Link';
 import Navbar from '../ui/Navbar';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
   const [categories, setCategories] = useState(null);
@@ -22,8 +22,7 @@ export default function Home() {
           categories && categories.map((item) => (
             <div className="app__category">
               <Link
-                className="link"
-                href={item.split("'s ").join('-')}
+                to={item.split("'s ").join('-')}
               >
                 {item.split("'s ")
                   .map((subitem) => (
@@ -32,6 +31,9 @@ export default function Home() {
               </Link>
             </div>
           ))
+        }
+        {
+          !categories && <h1>Loading...</h1>
         }
       </div>
     </div>

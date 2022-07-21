@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from './Button';
+import { Link } from 'react-router-dom';
 
 export default function Navbar({
   category, cart, showCart, setShowCart,
@@ -9,11 +10,8 @@ export default function Navbar({
   };
   return (
     <div className="navbar">
-      {
-        !cart && (
-          <li className="navbar__title">Scaler Ecommerce</li>
-        )
-      }
+
+      <Link to="/" className="navbar__title">Scaler Ecommerce</Link>
       {cart && !showCart && (
         <Button
           onClick={btnClick}

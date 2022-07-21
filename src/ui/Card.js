@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Card({ data, cart, updateCart }) {
   const [itemInCart, setItemInCart] = useState(false);
@@ -13,25 +14,30 @@ export default function Card({ data, cart, updateCart }) {
 
   useEffect(() => {
     setItemInCart(cart.find(item => item.id === data.id));
-  }, [ cart, data.id ]);
-  
+  }, [cart, data.id]);
+
   return (
-    <div className="product">
-      <div className="product__left">
-        <div className="product__main">
-          <div className="product__header">
+    <div className="card">
+      <div className="card__left">
+        <div className="card__main">
+          <div className="card__header">
             <h1>{data.title}</h1>
           </div>
-          <div className="product__focus">
+          <div className="card__focus">
             <span>Description</span>
-            <span>Details</span>
+            <Link
+              activeClassName="link"
+              to={`product/${data.id}`}
+            >
+              More Details
+            </Link>
           </div>
         </div>
-        <div className="product__details">
-          <div className="product__description">
+        <div className="card__details">
+          <div className="card__description">
             {data.description}
           </div>
-          <div className="product__rating">
+          <div className="card__rating">
             <span>
               &#11088;
               {data.rating.rate}
@@ -43,7 +49,7 @@ export default function Card({ data, cart, updateCart }) {
             </span>
 
           </div>
-          <div className="product__total">
+          <div className="card__total">
             <h3>Total Price : </h3>
             <p>
               $
@@ -51,7 +57,7 @@ export default function Card({ data, cart, updateCart }) {
             </p>
           </div>
           <div
-            className="product__add"
+            className="card__add"
             onClick={CartUpdate}
             role="button"
           >
@@ -64,7 +70,7 @@ export default function Card({ data, cart, updateCart }) {
           </div>
         </div>
       </div>
-      <div className="product__right">
+      <div className="card__right">
         <img src={data.image} alt={data.title} />
       </div>
     </div>

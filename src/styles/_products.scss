@@ -1,18 +1,17 @@
-$card-black: #333333;
+$product-card-black: #333333;
 $white:#ffffff;
-$add-button-hover-background:#2e282a;
 
-.card {
-  width: 45%;
+.product {
+  width: 70%;
   position: relative;
   display: flex;
-  height: 55vh;
-  box-shadow: -2rem 2rem 3.2rem rgba(0, 0, 0, 0.2);
+  height: 80vh;
+  box-shadow: -1.5rem 1.5rem 3.1.5rem rgba(0, 0, 0, 0.2);
   margin: 1rem;
 
   &__left {
-    height: 55vh;
-    width: 40%;
+    height: 80vh;
+    width: 70%;
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
 
@@ -22,15 +21,16 @@ $add-button-hover-background:#2e282a;
   &__right {
     background: $white;
     height: auto;
-    width: 60%;
+    width: 100%;
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+    @include flex-row;
+    @include justify-c;
+    @include align-c;
 
     img {
-      height: 40vh;
+      height: 70vh;
       width: 80%;
     }
   }
@@ -39,11 +39,7 @@ $add-button-hover-background:#2e282a;
     h1 {
       text-transform: uppercase;
       margin: 1.5rem 0;
-      font-size: 1.2rem;
-      display: -webkit-box;
-      -webkit-line-clamp: 4;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+      font-size: 1.5rem;
     }
   }
 
@@ -52,33 +48,26 @@ $add-button-hover-background:#2e282a;
 
     @include flex-col;
 
-    background: $card-black;
-    padding: 1rem 1.5rem;
+    background: $product-card-black;
+    padding: 1.5rem 1.5rem;
     height: 25vh;
   }
 
   &__focus {
     text-transform: uppercase;
-    width: 100%;
-    @include flex-row;
-    justify-content: space-around;
+    margin: 1 0 1rem 0;
+    padding: 0 0 1rem 0;
+    border-bottom: 0.1.5rem solid rgba(250, 250, 250, 0.3);
   }
 
-  &__focus a{
+  &__focus .link {
+    margin: 0 0 0 1rem;
     width: 100%;
     text-decoration: none;
-    color: $white;
-    padding: 0 0 1rem 0.3rem;
-    transition: 0.4s;
-    border-bottom: 0.2rem solid rgba(250, 250, 250, 0.3);
-  }
-
-  &__focus a:hover {
-    border-bottom: 0.2rem solid $white;
   }
 
   &__focus span {
-    border-bottom: 0.2rem solid $white;
+    border-bottom: 0.1.5rem solid $white;
     padding: 0 0 1rem 0;
   }
 
@@ -89,16 +78,16 @@ $add-button-hover-background:#2e282a;
   }
 
   &__description {
-    margin: 1rem 0;
+    margin: 1.5rem 1rem;
     line-height: 1.45;
-    color: $card-black;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    font-size: 1rem;
+    color: $product-card-black;
   }
 
   &__rating {
+    font-size: 1rem;
+    margin: 1rem;
+
     span:first-child {
       margin-right: 1rem;
     }
@@ -107,6 +96,9 @@ $add-button-hover-background:#2e282a;
   &__total {
     @include flex-row;
     @include align-c;
+
+    font-size: 1rem;
+    margin: 1rem;
 
     p {
       font-weight: 700;
@@ -117,23 +109,33 @@ $add-button-hover-background:#2e282a;
   }
 
   &__add {
-    border: 0.1rem solid $card-black;
+    border: 0.1rem solid $product-card-black;
     width: 80%;
     padding: 0;
-    padding: 0.7rem 1rem;
+    padding: 0.9rem 1rem;
     border-radius: 5rem;
     transition: all 0.5s ease-out;
-    color: $card-black;
+    color: $product-card-black;
     text-transform: uppercase;
-    
+
     @include flex-row;
     @include justify-c;
     @include align-c;
+
+    margin: 1rem;
   }
 
   &__add:hover {
     background-color: $add-button-hover-background;
     cursor: pointer;
-    color: $white;
+    
+    a{
+      color: $white;
+    }
   }
+}
+
+.productWrapper {
+  @include flex-row;
+  @include justify-c;
 }

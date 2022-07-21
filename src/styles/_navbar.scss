@@ -6,8 +6,8 @@ $stepper-item-hover-color: #23527c;
   width: 100%;
   height: 10vh;
 
-  display: flex;
-  justify-content: center;
+  @include flex-row;
+  @include justify-c;
 
   font-weight: 400;
   padding: 1rem;
@@ -15,6 +15,7 @@ $stepper-item-hover-color: #23527c;
 
   &__title {
     list-style: none;
+    text-decoration: none;
     margin-right: 0.8rem;
     transition: 5s;
     width: 30%;

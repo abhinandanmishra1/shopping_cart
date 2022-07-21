@@ -4,7 +4,12 @@ import Jewelery from './pages/Jewelery';
 import MenClothing from './pages/MenClothing';
 import WomenClothing from './pages/WomenClothing';
 import Electronics from './pages/Electronics';
-import Route from './Route';
+import Product from './pages/Product';
+import { fetchData } from './utils/utils';
+
+import {
+  BrowserRouter as Router, Route, Routes,
+} from 'react-router-dom';
 
 export default function App() {
   const [menClothing, setMenClothing] = useState(null);
@@ -17,68 +22,55 @@ export default function App() {
   const [womenClothingcart, updateWomenClothingCart] = useState([]);
   const [jewelerycart, updateJeweleryCart] = useState([]);
   useEffect(() => {
-    async function fetchJewelery() {
-      const response = await fetch(`${productURL}jewelery`);
-      const data = await response.json();
-      setJewelery(data);
+    async function getData() {
+      const jeweleryData = await fetchData(`${productURL}jewelery`);
+      setJewelery(jeweleryData);
+      const electronicsData = await fetchData(`${productURL}electronics`);
+      setElectronics(electronicsData);
+      const menClothingData = await fetchData(`${productURL}men's clothing`);
+      setMenClothing(menClothingData);
+      const womenClothingData = 
+      await fetchData(`${productURL}women's clothing`);
+      setWomenClothing(womenClothingData);
     }
-    fetchJewelery();
-    async function fetchMenClothing() {
-      const response = await fetch(`${productURL}men's clothing`);
-      const data = await response.json();
-      setMenClothing(data);
-    }
-    fetchMenClothing();
-    async function fetchWomenClothing() {
-      const response = await fetch(`${productURL}women's clothing`);
-      const data = await response.json();
-      setWomenClothing(data);
-    }
-    fetchWomenClothing();
-    async function fetchElectronics() {
-      const response = await fetch(`${productURL}electronics`);
-      const data = await response.json();
-      setElectronics(data);
-    }
-    fetchElectronics();
+    getData();
   }, []);
-
+  
   return (
     <div>
-      <Route path="/">
-        <Home />
-      </Route>
-      <Route path="/men-clothing">
-        <MenClothing
-          data={menClothing}
-          cart={menClothingcart}
-          updateCart={updateMenClothingCart}
-        />
-      </Route>
-      <Route path="/women-clothing">
-        <WomenClothing
-          data={womenClothing}
-          cart={womenClothingcart}
-          updateCart={updateWomenClothingCart}
-        />
-      </Route>
-      <Route path="/electronics">
-        <Electronics
-          data={electronics}
-          cart={electronicsCart}
-          updateCart={updateElectronicsCart}
-        />
-      </Route>
-      <Route path="/jewelery">
-        <Jewelery
-          data={jewelery}
-          cart={jewelerycart}
-          updateCart={updateJeweleryCart}
-        />
-      </Route>
+
+      <Router>
+        <Routes>
+          <Route
+            element={<Home />} 
+            path="/"
+          />
+          <Route path="/men-clothing" element={<MenClothing
+              data={menClothing}
+              cart={menClothingcart}
+              updateCart={updateMenClothingCart}
+            />} />
+          
+          <Route path="/women-clothing" element={<WomenClothing
+              data={womenClothing}
+              cart={womenClothingcart}
+              updateCart={updateWomenClothingCart}
+            />} />
+            
+          <Route path="/electronics" element={<Electronics
+              data={electronics}
+              cart={electronicsCart}
+              updateCart={updateElectronicsCart}
+            />} />
+          <Route path="/jewelery" element={<Jewelery
+              data={jewelery}
+              cart={jewelerycart}
+              updateCart={updateJeweleryCart}
+            />}/> 
+          <Route path=":category/product/:id" element={<Product />} />
+        </Routes>
+      </Router>
 
     </div>
   );
 }
-
-// run command - bin/webpack-dev-server

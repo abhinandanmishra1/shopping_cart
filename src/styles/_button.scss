@@ -4,12 +4,13 @@
   background: rgb(51, 116, 255);
   color: #ffffff;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-row;
+  @include justify-c;
+  @include align-c;
 
   border-radius: 1rem;
   font-size: 1.8rem;
+  font-weight: 700;
 }
 
 .btn:hover {
